@@ -1,6 +1,8 @@
 % This template aims to simplify and improve the (Xe)LaTeX template
-% provided by the TU Delft. Original template by TU Delft. Rewritten
-% template by Daan Zwaneveld (https://dzwaneveld.github.io)
+% provided by the EPFL. Original template by EPFL. Rewritten
+% template by Daan Zwaneveld (https://dzwaneveld.github.io). EPFL
+% adapted template by Batuhan Faik Derinbay.
+% (https://github.com/batuhanfaik/EPFL-Report-Template)
 %
 % This template is available under CC BY-NC 4.0. For more information,
 % see https://creativecommons.org/licenses/by-nc/4.0/. No attribution
@@ -8,7 +10,7 @@
 
 %% Class is based on the default book class and options will be passed
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{layout/epfl-report}[17-03-2022 v1.5 TU Delft Report Class]
+\ProvidesClass{layout/epfl-report}[03-04-2022 v1.0 EPFL Report Class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
@@ -70,9 +72,9 @@
     \def\largetitlestyle{\normalfont}
 
     %% Warning when using pdfLaTeX
-    \@latex@warning@no@line{You are using pdfLaTeX as the compiler. You can safely ignore this warning or consider changing the compiler to XeLaTeX or LuaLaTeX to adhere to the TU Delft house style.}
+    \@latex@warning@no@line{You are using pdfLaTeX as the compiler. You can safely ignore this warning or consider changing the compiler to XeLaTeX or LuaLaTeX to adhere to the EPFL house style.}
 \else
-    %% If XeLaTeX or LuaLaTeX is set as the compiler, the TU Delft house style fonts are used
+    %% If XeLaTeX or LuaLaTeX is set as the compiler, the EPFL house style fonts are used
     \RequirePackage{fontspec} % Advanced font selection
     \newfontfamily{\suisseintl}{SuisseIntl}
         [Path=layout/epfl/fonts/suisse-intl/,
@@ -81,7 +83,7 @@
         BoldFont=*-Bold,
         ItalicFont=*-RegularItalic]
         
-    %% Adding Arial as the main font and TU Delft Ultralight and Georgia as supplementary fonts
+    %% Adding Arial as the main font and EPFL Ultralight and Georgia as supplementary fonts
     \setmainfont{Arial}
     \setmathsf{Arial}
     \setmathtt{Arial}
@@ -176,7 +178,7 @@
     \node[below=2cm,fill=black!80,minimum width={\paperwidth},inner ysep=25pt,opacity=0.4,text opacity=1] at (current page.north) {%
         \begin{minipage}{0.9\paperwidth}
             \largetitlestyle\fontsize{50}{50}\selectfont\color{title}\@title \\[0.5ex]
-            \color{white}\normalfont\fontsize{22}{22}\selectfont%
+            \color{white}\normalfont\fonsize{22}{22}\selectfont%
             \subtitlestyle\ifdefvoid{\@subtitle}{}{\@subtitle \\[2.5ex]}%
             \subjectstyle\ifdefvoid{\@subject}{}{\@subject \\[0.5ex]}
             \subtitlestyle\fontsize{20}{24}\selectfont\ifdefvoid{\@covertable}{\@author}{\@covertable}
