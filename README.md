@@ -1,6 +1,6 @@
 # EPFL - Unofficial Report/Thesis Template (v1.0)
 
-This template aims to simplify and improve the (Xe)LaTeX report template by EPFL. Some of the main features:
+This template aims to adapt TU Delft Report Template to EPFL. Some of the main features:
 
 * **Simplicity First:** A class file that has been reduced by nearly 70% to simplify customization;
 * **Effortless:** Many common packages are included to get started immediately;
@@ -10,5 +10,6 @@ This template works with _pdfLaTeX_, _XeLaTeX_ and _LuaLaTeX_. In order to adher
 
 ## License
 
-This work is based of Daan Zwaneveld's TU Delft - Unofficial Report/Thesis Template
+This work is based of Daan Zwaneveld's [TU Delft - Unofficial Report/Thesis Template](https://github.com/dzwaneveld/TU-Delft-Unofficial-Report-Template)
+
 This template is available under CC BY-NC 4.0. For more information, see https://creativecommons.org/licenses/by-nc/4.0/. No attribution is required in reports/theses created using this template.
