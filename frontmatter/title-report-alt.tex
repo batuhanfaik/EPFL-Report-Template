@@ -1,0 +1,67 @@
+\begin{titlepage}
+
+\begin{center}
+
+%% Insert the EPFL logo at the top of the page
+\begin{tikzpicture}[remember picture, overlay]
+    \node[below=25mm] at (current page.north) {%
+         \includegraphics[width=0.5\linewidth]{layout/epfl/logo-red}
+    };
+\end{tikzpicture}
+\vspace{50mm}
+
+%% Print the title
+{\makeatletter
+\largetitlestyle\fontsize{45}{45}\selectfont\@title
+\makeatother}
+
+%% Print the subtitle
+{\makeatletter
+\ifdefvoid{\@subtitle}{}{\bigskip\fontsize{20}{20}\selectfont\@subtitle}
+\makeatother}
+
+\bigskip
+\bigskip
+
+by
+
+\bigskip
+\bigskip
+
+%% Print the name of the author
+{\makeatletter
+\largetitlestyle\fontsize{25}{25}\selectfont\@author
+\makeatother}
+
+\bigskip
+\bigskip
+
+%% Print table with names and student numbers
+\setlength\extrarowheight{2pt}
+\begin{tabular}{lc}
+    Student Name & Student Number \\\midrule
+    First Surname & 123456 \\
+\end{tabular}
+
+\vfill
+
+%% Print some more information at the bottom
+\begin{tabular}{ll}
+    Instructor: & I. Surname \\
+    Teaching Assistant: & I. Surname \\
+    Project Duration: & Month, Year - Month, Year \\
+    Faculty: & School of Computer and Communication Sciences, EPFL
+\end{tabular}
+
+\vfill
+
+%% Add a source and description for the cover and optional attribution for the template
+\begin{tabular}{p{15mm}p{10cm}}
+    Cover: & The Rolex Learning Center at EPFL (Modified) \\
+    % Feel free to remove the following attribution, it is not required - still appreciated :-)
+    Style: & EPFL Report Style, with modifications by Batuhan Faik Derinbay
+\end{tabular}
+
+\end{center}
+
+\end{titlepage}
