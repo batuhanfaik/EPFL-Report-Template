@@ -8,7 +8,7 @@
 
 %% Class is based on the default book class and options will be passed
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{layout/tudelft-report}[17-03-2022 v1.5 TU Delft Report Class]
+\ProvidesClass{layout/epfl-report}[17-03-2022 v1.5 TU Delft Report Class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
@@ -74,14 +74,22 @@
 \else
     %% If XeLaTeX or LuaLaTeX is set as the compiler, the TU Delft house style fonts are used
     \RequirePackage{fontspec} % Advanced font selection
-
+    \newfontfamily{\suisseintl}{SuisseIntl}
+        [Path=layout/epfl/fonts/suisse-intl/,
+        Extension=.ttf,
+        UprightFont=*-Regular,
+        BoldFont=*-Bold,
+        ItalicFont=*-RegularItalic]
+        
     %% Adding Arial as the main font and TU Delft Ultralight and Georgia as supplementary fonts
     \setmainfont{Arial}
     \setmathsf{Arial}
     \setmathtt{Arial}
 
-    \newfontfamily\largetitlestyle[Path=layout/tudelft/]{TUDelft-UltraLight.ttf}
-    \newfontfamily\quotefont{Georgia}
+    \newfontfamily\largetitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-SemiBold.ttf}
+    \newfontfamily\subtitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Thin.ttf}
+    \newfontfamily\subjectstyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Regular.ttf}
+    \newfontfamily\quotefont[Path=layout/epfl/fonts/suisse-intl-mono/]{SuisseIntlMono-Regular.ttf}
 
     %% Changing the quote environment to use Georgia
     \AtBeginEnvironment{quote}{\quotefont}
@@ -159,18 +167,19 @@
 
     \node[above=0,inner sep=0] at (current page.south) {\includegraphics[width=\paperwidth]{\@coverimage}};
 
-    \node[rotate=90,below right=40mm and 3mm] at (current page.west) {\ifdefvoid{\@affiliation}{}{\color{white}\@affiliation}};
+    \node[rotate=0, above right=1.8mm and 7mm] at (current page.south west)
+        {\ifdefvoid{\@affiliation}{}{\fontsize{8.1}{9.72}\selectfont\color{white}\@affiliation}};
 
     \node[above right=10mm] at (current page.south west) {%
-        \includegraphics[width=0.35\linewidth]{layout/tudelft/logo-white.pdf}};
+        \includegraphics[width=0.35\linewidth]{layout/epfl/logo-white.png}};
 
-    \node[below=2cm,fill=black!85,minimum width={\paperwidth},inner ysep=25pt,opacity=0.6,text opacity=1] at (current page.north) {%
+    \node[below=2cm,fill=black!80,minimum width={\paperwidth},inner ysep=25pt,opacity=0.4,text opacity=1] at (current page.north) {%
         \begin{minipage}{0.9\paperwidth}
             \largetitlestyle\fontsize{50}{50}\selectfont\color{title}\@title \\[0.5ex]
             \color{white}\normalfont\fontsize{22}{22}\selectfont%
-            \ifdefvoid{\@subtitle}{}{\@subtitle \\[2.5ex]}%
-            \ifdefvoid{\@subject}{}{\@subject \\[0.5ex]}
-            \largetitlestyle\fontsize{24}{24}\selectfont\ifdefvoid{\@covertable}{\@author}{\@covertable}
+            \subtitlestyle\ifdefvoid{\@subtitle}{}{\@subtitle \\[2.5ex]}%
+            \subjectstyle\ifdefvoid{\@subject}{}{\@subject \\[0.5ex]}
+            \subtitlestyle\fontsize{20}{24}\selectfont\ifdefvoid{\@covertable}{\@author}{\@covertable}
         \end{minipage}};
 
     \end{tikzpicture}
