@@ -67,71 +67,71 @@
 %% ----------------------------------------------------------------------
 
 \ifPDFTeX
-    %% With pdfLaTeX, use Paletino as the main font and Roboto Slab as title fonts
-    \RequirePackage[T1]{fontenc}  % Select T1 font encoding
-    \RequirePackage{newpxtext}    % Palatino-like font...
-    \RequirePackage{newpxmath}    % ...with support for mathematics
+%% With pdfLaTeX, use Paletino as the main font and Roboto Slab as title fonts
+\RequirePackage[T1]{fontenc}  % Select T1 font encoding
+\RequirePackage{newpxtext}    % Palatino-like font...
+\RequirePackage{newpxmath}    % ...with support for mathematics
 
-    \newcommand{\titlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{light}\selectfont}
-    \newcommand{\largetitlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{thin}\selectfont}
+\newcommand{\titlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{light}\selectfont}
+\newcommand{\largetitlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{thin}\selectfont}
 \else
-    %% If XeLaTeX or LuaLaTeX is set as the compiler, the EPFL house style fonts are used
-    \RequirePackage{fontspec} % Advanced font selection
+%% If XeLaTeX or LuaLaTeX is set as the compiler, the EPFL house style fonts are used
+\RequirePackage{fontspec} % Advanced font selection
 
-    %% Use SuisseIntl as the main font
-    \newfontfamily\suisseintl{SuisseIntl}
-        [Path=layout/epfl/fonts/suisse-intl/,
-        Extension=.ttf,
-        UprightFont=*-Regular,
-        BoldFont=*-Bold,
-        ItalicFont=*-RegularItalic,
-        BoldItalicFont=*-BoldItalic]
+%% Use SuisseIntl as the main font
+\newfontfamily\suisseintl{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic]
 
-    %% Adding SuisseIntl as the main font and supplementary fonts
-    \setmainfont{SuisseIntl}
-    [Path=layout/epfl/fonts/suisse-intl/,
-        Extension=.ttf,
-        UprightFont=*-Regular,
-        BoldFont=*-Bold,
-        ItalicFont=*-RegularItalic,
-        BoldItalicFont=*-BoldItalic]
-    \setmathsf{SuisseIntl}
-    [Path=layout/epfl/fonts/suisse-intl/,
-        Extension=.ttf,
-        UprightFont=*-Regular,
-        BoldFont=*-Bold,
-        ItalicFont=*-RegularItalic,
-        BoldItalicFont=*-BoldItalic]
-    \setmathtt{SuisseIntl}
-    [Path=layout/epfl/fonts/suisse-intl/,
-        Extension=.ttf,
-        UprightFont=*-Regular,
-        BoldFont=*-Bold,
-        ItalicFont=*-RegularItalic,
-        BoldItalicFont=*-BoldItalic]
-    \setsansfont{SuisseIntl}
-    [Path=layout/epfl/fonts/suisse-intl/,
-        Extension=.ttf,
-        UprightFont=*-Regular,
-        BoldFont=*-Bold,
-        ItalicFont=*-RegularItalic,
-        BoldItalicFont=*-BoldItalic]
-    \setmonofont{SuisseIntlMono}
-    [Path=layout/epfl/fonts/suisse-intl-mono/,
-        Scale=0.9,
-        LetterSpace=-6,
-        Extension=.ttf,
-        UprightFont=*-Regular,
-        BoldFont=*-Bold]
+%% Adding SuisseIntl as the main font and supplementary fonts
+\setmainfont{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic]
+\setmathsf{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic]
+\setmathtt{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic]
+\setsansfont{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-RegularItalic,
+    BoldItalicFont=*-BoldItalic]
+\setmonofont{SuisseIntlMono}
+[Path=layout/epfl/fonts/suisse-intl-mono/,
+    Scale=0.9,
+    LetterSpace=-6,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold]
 
-    \newfontfamily\titlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Bold.ttf}
-    \newfontfamily\largetitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-SemiBold.ttf}
-    \newfontfamily\subtitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Thin.ttf}
-    \newfontfamily\subjectstyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Regular.ttf}
-    \newfontfamily\quotefont[Path=layout/epfl/fonts/suisse-intl-mono/]{SuisseIntlMono-Regular.ttf}
+\newfontfamily\titlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Bold.ttf}
+\newfontfamily\largetitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-SemiBold.ttf}
+\newfontfamily\subtitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Thin.ttf}
+\newfontfamily\subjectstyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Regular.ttf}
+\newfontfamily\quotefont[Path=layout/epfl/fonts/suisse-intl-mono/]{SuisseIntlMono-Regular.ttf}
 
-    %% Changing the quote environment to use SuissIntlMono
-    \AtBeginEnvironment{quote}{\quotefont}
+%% Changing the quote environment to use SuissIntlMono
+\AtBeginEnvironment{quote}{\quotefont}
 \fi
 
 %% ----------------------------------------------------------------------
@@ -140,34 +140,34 @@
 
 %% Format the chapter titles and spacing
 \titleformat{\chapter}[display]
-    {\flushright}
-    {\fontsize{96}{96}\selectfont\largetitlestyle\thechapter}
-    {0pt}
-    {\Huge\titlestyle}
+{\flushright}
+{\fontsize{96}{96}\selectfont\largetitlestyle\thechapter}
+{0pt}
+{\Huge\titlestyle}
 \titlespacing*{\chapter}{0pt}{0pt}{2\baselineskip}
 
 %% Format the section titles and spacing
 \titleformat{\section}
-    {\Large\titlestyle\bfseries}
-    {\thesection.}
-    {5pt}
-    {}
+{\Large\titlestyle\bfseries}
+{\thesection.}
+{5pt}
+{}
 \titlespacing*{\section}{0pt}{\baselineskip}{0pt}
 
 %% Format the subsections titles and spacing
 \titleformat{\subsection}
-    {\large\titlestyle\bfseries}
-    {\thesubsection.}
-    {5pt}
-    {}
+{\large\titlestyle\bfseries}
+{\thesubsection.}
+{5pt}
+{}
 \titlespacing*{\subsection}{0pt}{\baselineskip}{0pt}
 
 %% Format the subsubsections titles and spacing
 \titleformat{\subsubsection}
-    {\titlestyle\bfseries}
-    {}
-    {0pt}
-    {}
+{\titlestyle\bfseries}
+{}
+{0pt}
+{}
 \titlespacing*{\subsubsection}{0pt}{\bigskipamount}{0pt}
 
 %% Reduce the vertical white space between chapters in the table of contents
@@ -185,15 +185,15 @@
 
 %% Format the header and footer of 'fancy' pages (based on twoside option)
 \if@twoside
-    \fancyhf{}
-    \fancyhead[LE,RO]{\titlestyle\thepage}
-    \fancyhead[RE]{\titlestyle\nouppercase{\leftmark}}
-    \fancyhead[LO]{\titlestyle\nouppercase{\rightmark}}
-    \RequirePackage{emptypage} % Remove header and footer on empty pages
+\fancyhf{}
+\fancyhead[LE,RO]{\titlestyle\thepage}
+\fancyhead[RE]{\titlestyle\nouppercase{\leftmark}}
+\fancyhead[LO]{\titlestyle\nouppercase{\rightmark}}
+\RequirePackage{emptypage} % Remove header and footer on empty pages
 \else
-    \fancyhf{}
-    \fancyhead[R]{\titlestyle\thepage}
-    \fancyhead[L]{\titlestyle\nouppercase{\rightmark}}
+\fancyhf{}
+\fancyhead[R]{\titlestyle\thepage}
+\fancyhead[L]{\titlestyle\nouppercase{\rightmark}}
 \fi
 
 \pagestyle{fancy} % Set the package defaults and the additional changes as the style
@@ -203,11 +203,11 @@
 %% ----------------------------------------------------------------------
 
 \newcommand*{\makecover}{
-    %% Use the Tikz library positioning and clear the page header and footer
+%% Use the Tikz library positioning and clear the page header and footer
     \usetikzlibrary{positioning}
     \thispagestyle{empty}
 
-    %% Construct the cover page with Tikz
+%% Construct the cover page with Tikz
     \begin{tikzpicture}[overlay,remember picture]
 
         %% Add the cover image
@@ -215,15 +215,15 @@
             \includegraphics[width=\paperwidth]{\@coverimage}};
 
         %% Add the affiliation on the left
-        \node[rotate=90,below right=40mm and 3mm] at (current page.west) {%
-            \ifdefvoid{\@affiliation}{}{\color{white}\titlestyle\@affiliation}};
+        \node[rotate=0,above right=1.8mm and 7mm] at (current page.south west) {%
+            \ifdefvoid{\@affiliation}{}{\fontsize{8}{9.8}\selectfont\color{white}\@affiliation}};
 
         %% Add the logo in the bottom left
         \node[above right=10mm] at (current page.south west) {%
             \includegraphics[width=0.35\linewidth]{layout/epfl/logo-white.png}};
 
         %% Add the banner with the title, subtitle, subject and author(s)
-        \node[below=2cm,fill=black!85,minimum width={\paperwidth},inner ysep=25pt,opacity=0.6,text opacity=1] at (current page.north) {%
+        \node[below=2cm,fill=black!80,minimum width={\paperwidth},inner ysep=25pt,opacity=0.4,text opacity=1] at (current page.north) {%
             \begin{minipage}{0.9\paperwidth}
                 %% Format and add the title
                 \color{title}\raggedright\largetitlestyle\fontsize{50}{50}\selectfont%
@@ -233,11 +233,11 @@
                 \ifdefvoid{\@subtitle}{}{\@subtitle \\[2.5ex]}%
                 \ifdefvoid{\@subject}{}{\@subject \\[0.5ex]}
                 %% Format and add author or table of authors
-                \largetitlestyle\fontsize{24}{24}\selectfont%
+                \largetitlestyle\fontsize{20}{24}\selectfont%
                 \ifdefvoid{\@covertable}{\@author}{\@covertable}
             \end{minipage}};
 
-        \end{tikzpicture}
+    \end{tikzpicture}
     \newpage
 }
 
@@ -248,13 +248,13 @@
 \RequirePackage{listings} % Typeset source code listings
 
 \lstset{
-  basicstyle=\ttfamily\footnotesize,  % Style of the font that is used for the code
-  backgroundcolor=\color{gray!10},    % Background color
-  keywordstyle=\color{red!75!black},  % Keyword style
-  stringstyle=\color{green!40!black}, % String style
-  commentstyle=\color{blue!30!black}, % Comment style
-  numbers=left,                       % Add line numbers on the left side
-  numbersep=5pt,                      % Decrease distance between line numbers and code
-  numberstyle=\tiny,                  % Line number style
-  breaklines=true,                    % Line break automatically
+    basicstyle=\ttfamily\footnotesize,  % Style of the font that is used for the code
+    backgroundcolor=\color{gray!10},    % Background color
+    keywordstyle=\color{red!75!black},  % Keyword style
+    stringstyle=\color{green!40!black}, % String style
+    commentstyle=\color{blue!30!black}, % Comment style
+    numbers=left,                       % Add line numbers on the left side
+    numbersep=5pt,                      % Decrease distance between line numbers and code
+    numberstyle=\tiny,                  % Line number style
+    breaklines=true,                    % Line break automatically
 }
