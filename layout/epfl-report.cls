@@ -7,10 +7,14 @@
 % This template is available under CC BY-NC 4.0. For more information,
 % see https://creativecommons.org/licenses/by-nc/4.0/. No attribution
 % is required in reports/theses created using this template.
+%
+%% ----------------------------------------------------------------------
+%%    Setting up the class, main packages and basic definitions
+%% ----------------------------------------------------------------------
 
 %% Class is based on the default book class and options will be passed
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{layout/epfl-report}[03-04-2022 v1.0 EPFL Report Class]
+\ProvidesClass{layout/epfl-report}[17-12-2022 v1.1 EPFL Report Class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
@@ -33,7 +37,7 @@
 \RequirePackage{pdfpages}   % Include PDF documents
 
 \RequirePackage[pdfusetitle,hidelinks]{hyperref} % Extensive support for hypertext
-\RequirePackage[noabbrev,nameinlink,]{cleveref} % Intelligent cross-referencing
+\RequirePackage[noabbrev]{cleveref} % Intelligent cross-referencing
 \RequirePackage{xcolor}     % Driver-independent color extensions
 \RequirePackage{tikz}       % Create PostScript and PDF graphics
 \RequirePackage{xspace}     % Define commands that appear not to eat spaces
@@ -48,41 +52,40 @@
 \RequirePackage{iftex}      % Adds if-else statements to support multiple compilers
 \RequirePackage{datetime}   % Change format of \today
 
-%% Defining commands for the cover image, subtitle, subject, affiliation and table of authors
-\newcommand*\subtitle[1]{\def\@subtitle{#1}}
-\newcommand*\subject[1]{\def\@subject{#1}}
-\newcommand*\affiliation[1]{\def\@affiliation{#1}}
-\newcommand*\coverimage[1]{\def\@coverimage{#1}}
-\newcommand*\covertable[1]{\def\@covertable{#1}}
+%% Establish commands for the subtitle, subject, affiliation, cover image and table of authors
+\newcommand*{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand*{\subject}[1]{\def\@subject{#1}}
+\newcommand*{\affiliation}[1]{\def\@affiliation{#1}}
+\newcommand*{\coverimage}[1]{\def\@coverimage{#1}}
+\newcommand*{\covertable}[1]{\def\@covertable{#1}}
 
-%% Scaling the margins to be slightly smaller than default (.7)
+%% Scale the margins to be slightly smaller than default (.7)
 \geometry{a4paper,hscale=0.75,vscale=0.8}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% I. Loading the fonts %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ----------------------------------------------------------------------
+%%    Setting up the fonts
+%% ----------------------------------------------------------------------
 
 \ifPDFTeX
-    %% pdfLaTeX is available for compatibility and uses a Paletino-like font
-    \RequirePackage[T1]{fontenc}  % Selecting T1 font encoding
+    %% With pdfLaTeX, use Paletino as the main font and Roboto Slab as title fonts
+    \RequirePackage[T1]{fontenc}  % Select T1 font encoding
     \RequirePackage{newpxtext}    % Palatino-like font...
     \RequirePackage{newpxmath}    % ...with support for mathematics
 
-    %% Another font can be used as the large title style font if desired
-    \def\largetitlestyle{\normalfont}
-
-    %% Warning when using pdfLaTeX
-    \@latex@warning@no@line{You are using pdfLaTeX as the compiler. You can safely ignore this warning or consider changing the compiler to XeLaTeX or LuaLaTeX to adhere to the EPFL house style.}
+    \newcommand{\titlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{light}\selectfont}
+    \newcommand{\largetitlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{thin}\selectfont}
 \else
     %% If XeLaTeX or LuaLaTeX is set as the compiler, the EPFL house style fonts are used
     \RequirePackage{fontspec} % Advanced font selection
+
+    %% Use SuisseIntl as the main font
     \newfontfamily{\suisseintl}{SuisseIntl}
         [Path=layout/epfl/fonts/suisse-intl/,
         Extension=.ttf,
         UprightFont=*-Regular,
         BoldFont=*-Bold,
         ItalicFont=*-RegularItalic]
-        
+
     %% Adding Arial as the main font and EPFL Ultralight and Georgia as supplementary fonts
     \setmainfont{Arial}
     \setmathsf{Arial}
@@ -97,90 +100,104 @@
     \AtBeginEnvironment{quote}{\quotefont}
 \fi
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% II. Adjusting the layout of the titles in the text and table of contents %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ----------------------------------------------------------------------
+%%    Formatting the titles and table of contents
+%% ----------------------------------------------------------------------
 
-%% Formatting chapter titles and spacing
+%% Format the chapter titles and spacing
 \titleformat{\chapter}[display]
     {\flushright}
     {\fontsize{96}{96}\selectfont\largetitlestyle\thechapter}
     {0pt}
-    {\Huge}
+    {\Huge\titlestyle}
 \titlespacing*{\chapter}{0pt}{0pt}{2\baselineskip}
 
-%% Formatting section titles and spacing
+%% Format the section titles and spacing
 \titleformat{\section}
-    {\Large\bfseries}
+    {\Large\titlestyle\bfseries}
     {\thesection.}
     {5pt}
     {}
 \titlespacing*{\section}{0pt}{\baselineskip}{0pt}
 
-%% Formatting subsections titles and spacing
+%% Format the subsections titles and spacing
 \titleformat{\subsection}
-    {\large\bfseries}
+    {\large\titlestyle\bfseries}
     {\thesubsection.}
     {5pt}
     {}
 \titlespacing*{\subsection}{0pt}{\baselineskip}{0pt}
 
-%% Formatting subsubsections titles and spacing
+%% Format the subsubsections titles and spacing
 \titleformat{\subsubsection}
-    {\bfseries}
+    {\titlestyle\bfseries}
     {}
     {0pt}
     {}
 \titlespacing*{\subsubsection}{0pt}{\bigskipamount}{0pt}
 
-%% Reducing the vertical white space between chapters in the table of contents
-\dottedcontents{chapter}[1.5em]{\vspace{0.5\baselineskip}\bfseries}{1.5em}{0pc}
+%% Reduce the vertical white space between chapters in the table of contents
+\dottedcontents{chapter}[1.5em]{\vspace{0.5\baselineskip}\bfseries}{1.5em}{0pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% III. Adjusting the header and footer %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ----------------------------------------------------------------------
+%%    Formatting the header and footer
+%% ----------------------------------------------------------------------
 
-%% Change the header and footer of pages where chapters do not start (depends on twoside option)
+%% Format the header and footer of 'plain' pages
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyfoot[C]{\titlestyle\thepage}}
+
+%% Format the header and footer of 'fancy' pages (based on twoside option)
 \if@twoside
     \fancyhf{}
-    \fancyhead[LE,RO]{\thepage}
-    \fancyhead[RE]{\nouppercase{\leftmark}}
-    \fancyhead[LO]{\nouppercase{\rightmark}}
+    \fancyhead[LE,RO]{\titlestyle\thepage}
+    \fancyhead[RE]{\titlestyle\nouppercase{\leftmark}}
+    \fancyhead[LO]{\titlestyle\nouppercase{\rightmark}}
     \RequirePackage{emptypage} % Remove header and footer on empty pages
 \else
     \fancyhf{}
-    \fancyhead[R]{\thepage}
-    \fancyhead[L]{\nouppercase{\rightmark}}
+    \fancyhead[R]{\titlestyle\thepage}
+    \fancyhead[L]{\titlestyle\nouppercase{\rightmark}}
 \fi
 
-\pagestyle{fancy} % Setting the package defaults and the additional changes as the style
+\pagestyle{fancy} % Set the package defaults and the additional changes as the style
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% IV. Creating the cover page %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ----------------------------------------------------------------------
+%%    Setting up the \makecover command for the cover page
+%% ----------------------------------------------------------------------
 
-\newcommand*\makecover{
+\newcommand*{\makecover}{
     %% Use the Tikz library positioning and clear the page header and footer
     \usetikzlibrary{positioning}
     \thispagestyle{empty}
 
-    %% Constructing the cover page (cover image, name of university, logo and title text respectively)
+    %% Construct the cover page with Tikz
     \begin{tikzpicture}[overlay,remember picture]
 
-    \node[above=0,inner sep=0] at (current page.south) {\includegraphics[width=\paperwidth]{\@coverimage}};
+        %% Add the cover image
+        \node[above=0,inner sep=0] at (current page.south) {%
+            \includegraphics[width=\paperwidth]{\@coverimage}};
 
+    %% Add the affiliation on the left
     \node[rotate=0, above right=1.8mm and 7mm] at (current page.south west)
         {\ifdefvoid{\@affiliation}{}{\fontsize{8.1}{9.72}\selectfont\color{white}\@affiliation}};
 
+    %% Add the logo in the bottom left
     \node[above right=10mm] at (current page.south west) {%
         \includegraphics[width=0.35\linewidth]{layout/epfl/logo-white.png}};
 
+    %% Add the banner with the title, subtitle, subject and author(s)
     \node[below=2cm,fill=black!80,minimum width={\paperwidth},inner ysep=25pt,opacity=0.4,text opacity=1] at (current page.north) {%
         \begin{minipage}{0.9\paperwidth}
+            %% Format and add the title
             \largetitlestyle\fontsize{50}{50}\selectfont\color{title}\@title \\[0.5ex]
+            %% Format and add (optional) subtitle and subject
             \color{white}\normalfont\fonsize{22}{22}\selectfont%
             \subtitlestyle\ifdefvoid{\@subtitle}{}{\@subtitle \\[2.5ex]}%
             \subjectstyle\ifdefvoid{\@subject}{}{\@subject \\[0.5ex]}
+            %% Format and add author or table of authors
             \subtitlestyle\fontsize{20}{24}\selectfont\ifdefvoid{\@covertable}{\@author}{\@covertable}
         \end{minipage}};
 
@@ -188,9 +205,9 @@
     \newpage
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% V. Setting up listings %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ----------------------------------------------------------------------
+%%    Setting up listings
+%% ----------------------------------------------------------------------
 
 \RequirePackage{listings} % Typeset source code listings
 
