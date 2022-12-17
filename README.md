@@ -1,4 +1,4 @@
-# EPFL - Unofficial Report/Thesis Template (v1.1.0)
+# EPFL - Unofficial Report/Thesis Template (v1.1.1)
 
 This template aims to adapt TU Delft Report Template to EPFL. Some of the main features:
 
