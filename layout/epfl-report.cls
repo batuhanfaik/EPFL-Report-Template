@@ -85,7 +85,8 @@
     UprightFont=*-Regular,
     BoldFont=*-Bold,
     ItalicFont=*-RegularItalic,
-    BoldItalicFont=*-BoldItalic]
+    BoldItalicFont=*-BoldItalic,
+    Ligatures=TeX]
 
 %% Adding SuisseIntl as the main font and supplementary fonts
 \setmainfont{SuisseIntl}
@@ -124,11 +125,11 @@
     UprightFont=*-Regular,
     BoldFont=*-Bold]
 
-\newfontfamily\titlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Bold.ttf}
-\newfontfamily\largetitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-SemiBold.ttf}
-\newfontfamily\subtitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Thin.ttf}
-\newfontfamily\subjectstyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Regular.ttf}
-\newfontfamily\quotefont[Path=layout/epfl/fonts/suisse-intl-mono/]{SuisseIntlMono-Regular.ttf}
+\newfontfamily\titlestyle[Path=layout/epfl/fonts/suisse-intl/,Ligatures=TeX]{SuisseIntl-Bold.ttf}
+\newfontfamily\largetitlestyle[Path=layout/epfl/fonts/suisse-intl/,Ligatures=TeX]{SuisseIntl-SemiBold.ttf}
+\newfontfamily\subtitlestyle[Path=layout/epfl/fonts/suisse-intl/,Ligatures=TeX]{SuisseIntl-Thin.ttf}
+\newfontfamily\subjectstyle[Path=layout/epfl/fonts/suisse-intl/,Ligatures=TeX]{SuisseIntl-Regular.ttf}
+\newfontfamily\quotefont[Path=layout/epfl/fonts/suisse-intl-mono/,Ligatures=TeX]{SuisseIntlMono-Regular.ttf}
 
 %% Changing the quote environment to use SuissIntlMono
 \AtBeginEnvironment{quote}{\quotefont}
